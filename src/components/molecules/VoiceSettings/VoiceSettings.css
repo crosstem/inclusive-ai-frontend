@@ -28,6 +28,9 @@
   font-family: inherit;
   background-color: white;
   cursor: pointer;
+  background: #ffffff;
+  color: #111; /* ダークテキスト */
+  border: 1px solid #ccc;
 }
 
 .voice-settings__select:focus {
