@@ -1,0 +1,28 @@
+name: gh-pages
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  gh-pages:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.12.0"
+          cache: "pnpm"
+      - name: Run CI tests
+        shell: bash
+        run: |
+          make ci-test
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
