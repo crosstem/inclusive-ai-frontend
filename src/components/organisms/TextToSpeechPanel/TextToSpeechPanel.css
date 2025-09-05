@@ -1,0 +1,32 @@
+.text-to-speech-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.text-to-speech-panel__main {
+  flex: 1;
+}
+
+.text-to-speech-panel__settings {
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .text-to-speech-panel {
+    flex-direction: row;
+    gap: 40px;
+  }
+  
+  .text-to-speech-panel__main {
+    flex: 2;
+  }
+  
+  .text-to-speech-panel__settings {
+    flex: 1;
+    min-width: 280px;
+  }
+}

@@ -1,8 +1,8 @@
-import { SpeechRecognitionPage } from './pages/SpeechRecognitionPage'
+import { TextToSpeechPage } from './pages/TextToSpeechPage'
 import './App.css'
 
 function App() {
-  return <SpeechRecognitionPage />
+  return <TextToSpeechPage />
 }
 
 export default App
