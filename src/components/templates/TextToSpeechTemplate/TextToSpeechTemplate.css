@@ -1,0 +1,46 @@
+.text-to-speech-template {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #fafafa;
+}
+
+.text-to-speech-template__header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.text-to-speech-template__title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.text-to-speech-template__main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.text-to-speech-template__footer {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+@media (max-width: 768px) {
+  .text-to-speech-template {
+    padding: 16px;
+  }
+  
+  .text-to-speech-template__header {
+    margin-bottom: 24px;
+  }
+  
+  .text-to-speech-template__main {
+    margin-bottom: 24px;
+  }
+}
