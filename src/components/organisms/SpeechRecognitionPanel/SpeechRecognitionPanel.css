@@ -1,0 +1,32 @@
+.speech-recognition-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.speech-recognition-panel__controls {
+  display: flex;
+  justify-content: center;
+}
+
+.speech-recognition-panel__display {
+  flex: 1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .speech-recognition-panel {
+    padding: 16px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .speech-recognition-panel {
+    padding: 12px;
+    gap: 16px;
+  }
+}

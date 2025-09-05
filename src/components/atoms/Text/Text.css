@@ -1,0 +1,57 @@
+.text {
+  margin: 0;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+/* Variants */
+.text--body {
+  font-weight: 400;
+}
+
+.text--subtitle {
+  font-weight: 600;
+}
+
+.text--caption {
+  font-weight: 400;
+  font-style: italic;
+}
+
+.text--code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  background-color: #f8f9fa;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-weight: 400;
+}
+
+/* Sizes */
+.text--small {
+  font-size: 14px;
+}
+
+.text--medium {
+  font-size: 16px;
+}
+
+.text--large {
+  font-size: 18px;
+}
+
+/* Colors */
+.text--primary {
+  color: #212529;
+}
+
+.text--secondary {
+  color: #495057;
+}
+
+.text--muted {
+  color: #6c757d;
+}
+
+.text--error {
+  color: #dc3545;
+}
