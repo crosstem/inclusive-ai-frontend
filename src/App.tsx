@@ -1,5 +1,6 @@
 import { SpeechRecognitionPage } from "./pages/SpeechRecognitionPage";
 import { TextToSpeechPage } from "./pages/TextToSpeechPage";
+import { AzureSpeechRecognitionPage } from "./pages/AzureSpeechRecognitionPage";
 import "./App.css";
 
 function App() {
@@ -8,6 +9,8 @@ function App() {
       <SpeechRecognitionPage />
       <hr />
       <TextToSpeechPage />
+      <hr />
+      <AzureSpeechRecognitionPage />
     </div>
   );
 }
