@@ -40,3 +40,56 @@
 .read-the-docs {
   color: #888;
 }
+
+.app {
+  max-width: 100%;
+  width: 100%;
+}
+
+.comparison-container {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  min-height: 600px;
+}
+
+.speech-recognition-left,
+.speech-recognition-right {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #f9f9f9;
+}
+
+.speech-recognition-left h2,
+.speech-recognition-right h2 {
+  margin-top: 0;
+  text-align: center;
+  color: #333;
+  border-bottom: 2px solid #646cff;
+  padding-bottom: 0.5rem;
+}
+
+.text-to-speech-section {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.text-to-speech-section h2 {
+  margin-top: 0;
+  text-align: center;
+  color: #333;
+  border-bottom: 2px solid #646cff;
+  padding-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .comparison-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
