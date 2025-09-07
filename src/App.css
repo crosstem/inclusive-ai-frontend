@@ -71,15 +71,24 @@
   padding-bottom: 0.5rem;
 }
 
-.text-to-speech-section {
+.text-to-speech-comparison {
+  display: flex;
+  gap: 2rem;
   margin-top: 2rem;
-  padding: 1rem;
+  min-height: 600px;
+}
+
+.text-to-speech-left,
+.text-to-speech-right {
+  flex: 1;
   border: 1px solid #ccc;
   border-radius: 8px;
+  padding: 1rem;
   background-color: #f9f9f9;
 }
 
-.text-to-speech-section h2 {
+.text-to-speech-left h2,
+.text-to-speech-right h2 {
   margin-top: 0;
   text-align: center;
   color: #333;
@@ -88,7 +97,8 @@
 }
 
 @media (max-width: 768px) {
-  .comparison-container {
+  .comparison-container,
+  .text-to-speech-comparison {
     flex-direction: column;
     gap: 1rem;
   }

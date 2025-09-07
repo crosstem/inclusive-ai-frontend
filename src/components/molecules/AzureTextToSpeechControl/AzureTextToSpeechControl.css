@@ -1,0 +1,49 @@
+.azure-text-to-speech-control {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px;
+  border: 1px solid var(--border-color, #e1e5e9);
+  border-radius: 8px;
+  background: var(--background-primary, #ffffff);
+}
+
+.azure-text-to-speech-control__input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.azure-text-to-speech-control__input-section label {
+  font-weight: 500;
+}
+
+.azure-text-to-speech-control__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.azure-text-to-speech-control__buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.azure-text-to-speech-control__error {
+  padding: 12px;
+  background: var(--error-background, #fef2f2);
+  border: 1px solid var(--error-border, #fecaca);
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .azure-text-to-speech-control {
+    padding: 12px;
+    gap: 16px;
+  }
+  
+  .azure-text-to-speech-control__buttons {
+    gap: 8px;
+  }
+}

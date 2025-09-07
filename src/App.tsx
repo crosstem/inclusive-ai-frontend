@@ -1,6 +1,7 @@
 import { SpeechRecognitionPage } from "./pages/SpeechRecognitionPage";
 import { TextToSpeechPage } from "./pages/TextToSpeechPage";
 import { AzureSpeechRecognitionPage } from "./pages/AzureSpeechRecognitionPage";
+import { AzureTextToSpeechPage } from "./pages/AzureTextToSpeechPage";
 import "./App.css";
 
 function App() {
@@ -17,9 +18,15 @@ function App() {
         </div>
       </div>
       <hr />
-      <div className="text-to-speech-section">
-        <h2>Text to Speech</h2>
-        <TextToSpeechPage />
+      <div className="text-to-speech-comparison">
+        <div className="text-to-speech-left">
+          <h2>Web Speech API</h2>
+          <TextToSpeechPage />
+        </div>
+        <div className="text-to-speech-right">
+          <h2>Azure AI Speech</h2>
+          <AzureTextToSpeechPage />
+        </div>
       </div>
     </div>
   );

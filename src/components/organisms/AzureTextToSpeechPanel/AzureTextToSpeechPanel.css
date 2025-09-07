@@ -1,0 +1,39 @@
+.azure-text-to-speech-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px;
+}
+
+.azure-text-to-speech-panel__main {
+  flex: 1;
+}
+
+.azure-text-to-speech-panel__settings {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .azure-text-to-speech-panel {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .azure-text-to-speech-panel__main {
+    flex: 2;
+    margin-right: 24px;
+  }
+  
+  .azure-text-to-speech-panel__settings {
+    flex: 1;
+    min-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .azure-text-to-speech-panel {
+    padding: 16px;
+    gap: 20px;
+  }
+}
