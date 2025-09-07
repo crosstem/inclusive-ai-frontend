@@ -3,6 +3,7 @@ import { TextToSpeechPage } from "./pages/TextToSpeechPage";
 import { AzureSpeechRecognitionPage } from "./pages/AzureSpeechRecognitionPage";
 import { AzureTextToSpeechPage } from "./pages/AzureTextToSpeechPage";
 import { ChatPage } from "./pages/ChatPage";
+import { CameraPage } from "./pages/CameraPage";
 import "./App.css";
 
 function App() {
@@ -33,6 +34,11 @@ function App() {
       <div className="chat-section">
         <h2>WebSocket Chat</h2>
         <ChatPage />
+      </div>
+      <hr />
+      <div className="camera-section">
+        <h2>Camera</h2>
+        <CameraPage />
       </div>
     </div>
   );

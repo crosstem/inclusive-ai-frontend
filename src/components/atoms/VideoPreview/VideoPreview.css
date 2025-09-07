@@ -1,0 +1,14 @@
+.video-preview {
+  display: inline-block;
+  background: #000;
+  width: 100%;
+  height: auto;
+}
+.video-preview video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.video-preview--mirrored video {
+  transform: scaleX(-1);
+}

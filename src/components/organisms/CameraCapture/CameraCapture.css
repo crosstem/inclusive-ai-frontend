@@ -1,0 +1,9 @@
+.camera-capture {
+  display: block;
+  max-width: 640px;
+}
+
+.camera-capture canvas {
+  width: 100%;
+  height: auto;
+}
