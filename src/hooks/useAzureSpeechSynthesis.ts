@@ -1,25 +1,27 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
-import * as speechsdk from 'microsoft-cognitiveservices-speech-sdk';
-import type { 
+import { useState, useEffect, useCallback, useRef } from "react";
+import * as speechsdk from "microsoft-cognitiveservices-speech-sdk";
+import type {
   AzureSpeechSynthesisState,
   AzureSpeechConfig,
   AzureVoiceInfo,
-  AzureSpeechSynthesisSettings
-} from '../types/azureSpeech';
+  AzureSpeechSynthesisSettings,
+} from "../types/azureSpeech";
 
 const getAzureConfig = (): AzureSpeechConfig | null => {
   const subscriptionKey = import.meta.env.VITE_AZURE_SPEECH_KEY;
   const region = import.meta.env.VITE_AZURE_SPEECH_REGION;
-  
+
   if (!subscriptionKey || !region) {
-    console.warn('Azure Speech configuration missing. Please set VITE_AZURE_SPEECH_KEY and VITE_AZURE_SPEECH_REGION environment variables.');
+    console.warn(
+      "Azure Speech configuration missing. Please set VITE_AZURE_SPEECH_KEY and VITE_AZURE_SPEECH_REGION environment variables."
+    );
     return null;
   }
-  
+
   return {
     subscriptionKey,
     region,
-    language: 'ja-JP', // Japanese as default, matching Web Speech API
+    language: "ja-JP", // Japanese as default, matching Web Speech API
   };
 };
 
@@ -30,7 +32,7 @@ export const useAzureSpeechSynthesis = () => {
     isPaused: false,
     voices: [],
     selectedVoice: null,
-    text: '',
+    text: "",
     rate: 1,
     pitch: 1,
     volume: 1,
@@ -44,12 +46,12 @@ export const useAzureSpeechSynthesis = () => {
   // Initialize Azure Speech SDK
   useEffect(() => {
     const config = getAzureConfig();
-    
+
     if (!config) {
-      setState(prev => ({ 
-        ...prev, 
-        isSupported: false, 
-        error: 'Azure Speech configuration missing' 
+      setState((prev) => ({
+        ...prev,
+        isSupported: false,
+        error: "Azure Speech configuration missing",
       }));
       return;
     }
@@ -60,7 +62,7 @@ export const useAzureSpeechSynthesis = () => {
         config.subscriptionKey,
         config.region
       );
-      speechConfig.speechSynthesisLanguage = config.language || 'ja-JP';
+      speechConfig.speechSynthesisLanguage = config.language || "ja-JP";
       speechConfigRef.current = speechConfig;
 
       // Create synthesizer
@@ -70,20 +72,22 @@ export const useAzureSpeechSynthesis = () => {
         audioConfig
       );
 
-      setState(prev => ({ 
-        ...prev, 
-        isSupported: true, 
-        isConnected: true 
+      setState((prev) => ({
+        ...prev,
+        isSupported: true,
+        isConnected: true,
       }));
 
       // Load available voices
       loadVoices();
-
     } catch (error) {
-      setState(prev => ({
+      setState((prev) => ({
         ...prev,
         isSupported: false,
-        error: error instanceof Error ? error.message : 'Failed to initialize Azure Speech SDK',
+        error:
+          error instanceof Error
+            ? error.message
+            : "Failed to initialize Azure Speech SDK",
       }));
     }
 
@@ -97,105 +101,103 @@ export const useAzureSpeechSynthesis = () => {
   const loadVoices = useCallback(() => {
     if (!speechConfigRef.current) return;
 
-    // Use a simple voice list for now - Azure provides standard voices
+    // Use supported Neural voices only - Standard voices like Ayumi and Ichiro have been deprecated
     const defaultVoices: AzureVoiceInfo[] = [
       {
-        name: 'ja-JP-NanamiNeural',
-        displayName: 'Nanami (Neural)',
-        localName: 'ななみ',
-        locale: 'ja-JP',
-        gender: 'Female',
-        voiceType: 'Neural',
+        name: "ja-JP-NanamiNeural",
+        displayName: "Nanami (Neural)",
+        localName: "ななみ",
+        locale: "ja-JP",
+        gender: "Female",
+        voiceType: "Neural",
       },
       {
-        name: 'ja-JP-KeitaNeural',
-        displayName: 'Keita (Neural)',
-        localName: 'けいた',
-        locale: 'ja-JP',
-        gender: 'Male',
-        voiceType: 'Neural',
-      },
-      {
-        name: 'ja-JP-Ayumi',
-        displayName: 'Ayumi',
-        localName: 'あゆみ',
-        locale: 'ja-JP',
-        gender: 'Female',
-        voiceType: 'Standard',
-      },
-      {
-        name: 'ja-JP-Ichiro',
-        displayName: 'Ichiro',
-        localName: 'いちろう',
-        locale: 'ja-JP',
-        gender: 'Male',
-        voiceType: 'Standard',
+        name: "ja-JP-KeitaNeural",
+        displayName: "Keita (Neural)",
+        localName: "けいた",
+        locale: "ja-JP",
+        gender: "Male",
+        voiceType: "Neural",
       },
     ];
 
-    setState(prev => ({
+    setState((prev) => ({
       ...prev,
       voices: defaultVoices,
       selectedVoice: prev.selectedVoice || defaultVoices[0] || null,
     }));
   }, []);
 
-  const speak = useCallback((text: string, settings?: Partial<AzureSpeechSynthesisSettings>) => {
-    if (!synthesizerRef.current || !text.trim()) return;
+  const speak = useCallback(
+    (text: string, settings?: Partial<AzureSpeechSynthesisSettings>) => {
+      if (!synthesizerRef.current || !text.trim()) return;
 
-    // Stop any ongoing speech
-    stop();
+      // Stop any ongoing speech
+      stop();
 
-    const voice = settings?.voice ?? state.selectedVoice;
-    const rate = settings?.rate ?? state.rate;
-    const pitch = settings?.pitch ?? state.pitch;
-    const volume = settings?.volume ?? state.volume;
+      const voice = settings?.voice ?? state.selectedVoice;
+      const rate = settings?.rate ?? state.rate;
+      const pitch = settings?.pitch ?? state.pitch;
+      const volume = settings?.volume ?? state.volume;
 
-    if (!voice) {
-      setState(prev => ({ ...prev, error: 'No voice selected' }));
-      return;
-    }
+      if (!voice) {
+        setState((prev) => ({ ...prev, error: "No voice selected" }));
+        return;
+      }
 
-    // Create SSML with voice and prosody settings
-    const ssml = `
-      <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${voice.locale}">
+      // Create SSML with voice and prosody settings
+      const ssml = `
+      <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${
+        voice.locale
+      }">
         <voice name="${voice.name}">
-          <prosody rate="${rate}" pitch="${pitch > 1 ? '+' : ''}${((pitch - 1) * 50).toFixed(0)}%" volume="${(volume * 100).toFixed(0)}%">
+          <prosody rate="${rate}" pitch="${pitch > 1 ? "+" : ""}${(
+        (pitch - 1) *
+        50
+      ).toFixed(0)}%" volume="${(volume * 100).toFixed(0)}%">
             ${text}
           </prosody>
         </voice>
       </speak>
     `;
 
-    setState(prev => ({ 
-      ...prev, 
-      isSpeaking: true, 
-      isPaused: false, 
-      error: null, 
-      text 
-    }));
+      setState((prev) => ({
+        ...prev,
+        isSpeaking: true,
+        isPaused: false,
+        error: null,
+        text,
+      }));
 
-    synthesizerRef.current.speakSsmlAsync(
-      ssml,
-      (result: speechsdk.SpeechSynthesisResult) => {
-        if (result.reason === speechsdk.ResultReason.SynthesizingAudioCompleted) {
-          setState(prev => ({ ...prev, isSpeaking: false, isPaused: false }));
-        } else {
-          setState(prev => ({
-            ...prev,
-            isSpeaking: false,
-            isPaused: false,
-            error: result.errorDetails || 'Speech synthesis failed',
-          }));
+      synthesizerRef.current.speakSsmlAsync(
+        ssml,
+        (result: speechsdk.SpeechSynthesisResult) => {
+          if (
+            result.reason === speechsdk.ResultReason.SynthesizingAudioCompleted
+          ) {
+            setState((prev) => ({
+              ...prev,
+              isSpeaking: false,
+              isPaused: false,
+            }));
+          } else {
+            setState((prev) => ({
+              ...prev,
+              isSpeaking: false,
+              isPaused: false,
+              error: result.errorDetails || "Speech synthesis failed",
+            }));
+          }
         }
-      }
-    );
-  }, [state.selectedVoice, state.rate, state.pitch, state.volume]);
+      );
+    },
+    [state.selectedVoice, state.rate, state.pitch, state.volume]
+  );
 
   const stop = useCallback(() => {
     if (synthesizerRef.current) {
       synthesizerRef.current.close();
-      
+
       // Recreate synthesizer for next use
       if (speechConfigRef.current) {
         const audioConfig = speechsdk.AudioConfig.fromDefaultSpeakerOutput();
@@ -205,25 +207,29 @@ export const useAzureSpeechSynthesis = () => {
         );
       }
     }
-    setState(prev => ({ ...prev, isSpeaking: false, isPaused: false }));
+    setState((prev) => ({ ...prev, isSpeaking: false, isPaused: false }));
   }, []);
 
-  const updateSettings = useCallback((settings: Partial<AzureSpeechSynthesisSettings>) => {
-    setState(prev => ({
-      ...prev,
-      selectedVoice: settings.voice !== undefined ? settings.voice : prev.selectedVoice,
-      rate: settings.rate !== undefined ? settings.rate : prev.rate,
-      pitch: settings.pitch !== undefined ? settings.pitch : prev.pitch,
-      volume: settings.volume !== undefined ? settings.volume : prev.volume,
-    }));
-  }, []);
+  const updateSettings = useCallback(
+    (settings: Partial<AzureSpeechSynthesisSettings>) => {
+      setState((prev) => ({
+        ...prev,
+        selectedVoice:
+          settings.voice !== undefined ? settings.voice : prev.selectedVoice,
+        rate: settings.rate !== undefined ? settings.rate : prev.rate,
+        pitch: settings.pitch !== undefined ? settings.pitch : prev.pitch,
+        volume: settings.volume !== undefined ? settings.volume : prev.volume,
+      }));
+    },
+    []
+  );
 
   const setText = useCallback((text: string) => {
-    setState(prev => ({ ...prev, text }));
+    setState((prev) => ({ ...prev, text }));
   }, []);
 
   const clearError = useCallback(() => {
-    setState(prev => ({ ...prev, error: null }));
+    setState((prev) => ({ ...prev, error: null }));
   }, []);
 
   return {
