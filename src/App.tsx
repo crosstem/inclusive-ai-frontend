@@ -2,6 +2,7 @@ import { SpeechRecognitionPage } from "./pages/SpeechRecognitionPage";
 import { TextToSpeechPage } from "./pages/TextToSpeechPage";
 import { AzureSpeechRecognitionPage } from "./pages/AzureSpeechRecognitionPage";
 import { AzureTextToSpeechPage } from "./pages/AzureTextToSpeechPage";
+import { ChatPage } from "./pages/ChatPage";
 import "./App.css";
 
 function App() {
@@ -27,6 +28,11 @@ function App() {
           <h2>Azure AI Speech</h2>
           <AzureTextToSpeechPage />
         </div>
+      </div>
+      <hr />
+      <div className="chat-section">
+        <h2>WebSocket Chat</h2>
+        <ChatPage />
       </div>
     </div>
   );
