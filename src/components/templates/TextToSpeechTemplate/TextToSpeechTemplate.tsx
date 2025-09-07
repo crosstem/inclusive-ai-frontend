@@ -6,6 +6,7 @@ export interface TextToSpeechTemplateProps {
   children: React.ReactNode;
   title?: string;
   subtitle?: string;
+  footerText?: string;
   className?: string;
 }
 
@@ -13,6 +14,7 @@ export const TextToSpeechTemplate: React.FC<TextToSpeechTemplateProps> = ({
   children,
   title = 'テキスト音声読み上げ',
   subtitle = 'Web Speech APIを使用したテキスト読み上げ機能のデモ',
+  footerText = '※ 音声の読み上げにはブラウザの音声合成機能を使用しています',
   className = '',
 }) => {
   const baseClass = 'text-to-speech-template';
@@ -37,7 +39,7 @@ export const TextToSpeechTemplate: React.FC<TextToSpeechTemplateProps> = ({
       
       <footer className="text-to-speech-template__footer">
         <Text variant="caption" color="muted" size="small">
-          ※ 音声の読み上げにはブラウザの音声合成機能を使用しています
+          {footerText}
         </Text>
       </footer>
     </div>

@@ -1,0 +1,33 @@
+/* Azure Text-to-Speech Panel Component Styles */
+.azure-text-to-speech-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.azure-text-to-speech-panel__main {
+  flex: 1;
+}
+
+.azure-text-to-speech-panel__settings {
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .azure-text-to-speech-panel {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .azure-text-to-speech-panel__main {
+    flex: 2;
+  }
+
+  .azure-text-to-speech-panel__settings {
+    flex: 1;
+    min-width: 250px;
+  }
+}
