@@ -1,0 +1,32 @@
+.realtime-chat-template {
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+  background: var(--background-secondary, #f8f9fa);
+}
+
+.realtime-chat-template__container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .realtime-chat-template {
+    padding: 16px;
+  }
+  
+  .realtime-chat-template__container {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .realtime-chat-template {
+    padding: 12px;
+  }
+}

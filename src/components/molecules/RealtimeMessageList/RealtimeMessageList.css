@@ -1,0 +1,72 @@
+.realtime-message-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--background-primary, #ffffff);
+  border: 1px solid var(--border-color, #e1e5e9);
+  border-radius: 8px;
+}
+
+.realtime-message-list__container {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scroll-behavior: smooth;
+}
+
+.realtime-message-list__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 200px;
+  color: var(--text-secondary, #666666);
+  text-align: center;
+  gap: 16px;
+}
+
+.realtime-message-list__empty-icon {
+  font-size: 48px;
+  opacity: 0.5;
+}
+
+.realtime-message-list__empty-text {
+  font-size: 16px;
+  max-width: 300px;
+  line-height: 1.5;
+}
+
+/* Custom scrollbar */
+.realtime-message-list__container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.realtime-message-list__container::-webkit-scrollbar-track {
+  background: var(--background-secondary, #f8f9fa);
+  border-radius: 3px;
+}
+
+.realtime-message-list__container::-webkit-scrollbar-thumb {
+  background: var(--border-color, #e1e5e9);
+  border-radius: 3px;
+}
+
+.realtime-message-list__container::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary, #666666);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .realtime-message-list__container {
+    padding: 12px;
+  }
+  
+  .realtime-message-list__empty-text {
+    font-size: 14px;
+  }
+}

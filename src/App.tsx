@@ -4,6 +4,7 @@ import { AzureSpeechRecognitionPage } from "./pages/AzureSpeechRecognitionPage";
 import { AzureTextToSpeechPage } from "./pages/AzureTextToSpeechPage";
 import { ChatPage } from "./pages/ChatPage";
 import { CameraPage } from "./pages/CameraPage";
+import { RealtimeChatPage } from "./pages/RealtimeChatPage";
 import "./App.css";
 
 function App() {
@@ -39,6 +40,11 @@ function App() {
       <div className="camera-section">
         <h2>Camera</h2>
         <CameraPage />
+      </div>
+      <hr />
+      <div className="realtime-chat-section">
+        <h2>Azure OpenAI Realtime Chat</h2>
+        <RealtimeChatPage />
       </div>
     </div>
   );
