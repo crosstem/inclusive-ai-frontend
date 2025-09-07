@@ -96,6 +96,20 @@
   padding-bottom: 0.5rem;
 }
 
+.chat-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.chat-section h2 {
+  margin-bottom: 1rem;
+  color: #333;
+  border-bottom: 2px solid #646cff;
+  padding-bottom: 0.5rem;
+  display: inline-block;
+  min-width: 200px;
+}
+
 @media (max-width: 768px) {
   .comparison-container,
   .text-to-speech-comparison {
