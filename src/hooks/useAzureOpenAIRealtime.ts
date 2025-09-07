@@ -240,11 +240,12 @@ export const useAzureOpenAIRealtime = () => {
       case 'session.update':
         // Session updated successfully
         break;
-      case 'session.error':
+      case 'session.error': {
         const errorMessage = event.error?.message || 'Session error occurred';
         setState(prev => ({ ...prev, error: errorMessage }));
         addMessage(`Session error: ${errorMessage}`, 'system');
         break;
+      }
       case 'session.end':
         addMessage('Session ended by server', 'system');
         stopSession();
