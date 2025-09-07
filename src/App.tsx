@@ -6,11 +6,21 @@ import "./App.css";
 function App() {
   return (
     <div className="app">
-      <SpeechRecognitionPage />
+      <div className="comparison-container">
+        <div className="speech-recognition-left">
+          <h2>Web Speech API</h2>
+          <SpeechRecognitionPage />
+        </div>
+        <div className="speech-recognition-right">
+          <h2>Azure AI Speech</h2>
+          <AzureSpeechRecognitionPage />
+        </div>
+      </div>
       <hr />
-      <TextToSpeechPage />
-      <hr />
-      <AzureSpeechRecognitionPage />
+      <div className="text-to-speech-section">
+        <h2>Text to Speech</h2>
+        <TextToSpeechPage />
+      </div>
     </div>
   );
 }
