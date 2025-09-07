@@ -17,7 +17,6 @@ export const AzureSpeechRecognitionPanel: React.FC<AzureSpeechRecognitionPanelPr
     interimTranscript,
     error,
     isSupported,
-    isConnected,
     startListening,
     stopListening,
     clearTranscript,
@@ -29,8 +28,6 @@ export const AzureSpeechRecognitionPanel: React.FC<AzureSpeechRecognitionPanelPr
   // Show connection status in error if not connected but supported
   const displayError = !isSupported 
     ? error || 'Azure Speech SDK not available' 
-    : (!isConnected && isSupported && !error)
-    ? 'Azure Speech Service not connected'
     : error;
 
   return (
@@ -38,7 +35,7 @@ export const AzureSpeechRecognitionPanel: React.FC<AzureSpeechRecognitionPanelPr
       <div className="azure-speech-recognition-panel__controls">
         <MicrophoneControl
           isListening={isListening}
-          isSupported={isSupported && isConnected}
+          isSupported={isSupported}
           error={displayError}
           onStart={startListening}
           onStop={stopListening}
