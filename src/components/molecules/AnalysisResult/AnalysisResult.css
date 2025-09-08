@@ -1,0 +1,25 @@
+.analysis-result {
+  margin: 15px 0;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.analysis-result--error {
+  border-color: #ff6b6b;
+  background-color: #ffe0e0;
+}
+
+.analysis-result__json {
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  max-height: 300px;
+  margin-top: 10px;
+}

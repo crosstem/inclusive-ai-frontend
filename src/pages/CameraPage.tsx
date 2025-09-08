@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { CameraControls } from '../components/molecules/CameraControls';
 import { CameraCapture } from '../components/organisms/CameraCapture';
+import { ImageAnalysisPanel } from '../components/organisms/ImageAnalysisPanel/ImageAnalysisPanel';
 
 export const CameraPage: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -50,6 +51,7 @@ export const CameraPage: React.FC = () => {
       <h3>Camera</h3>
       <CameraCapture videoRef={videoRef} />
       <CameraControls onStart={start} onStop={stop} onSwitch={switchCamera} isRunning={isRunning} />
+      <ImageAnalysisPanel videoRef={videoRef} />
     </div>
   );
 };

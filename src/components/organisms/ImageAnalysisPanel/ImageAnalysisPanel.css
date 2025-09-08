@@ -1,0 +1,13 @@
+.image-analysis-panel {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.image-analysis-panel h4 {
+  margin: 0 0 15px 0;
+  text-align: center;
+  color: #333;
+}
