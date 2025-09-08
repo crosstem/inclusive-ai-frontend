@@ -6,6 +6,7 @@ export interface AzureOpenAIRealtimeConfig {
   deployment: string;
   voice: string;
   instructions?: string;
+  location: string;
 }
 
 export interface RealtimeSessionResponse {

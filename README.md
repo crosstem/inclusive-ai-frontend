@@ -56,6 +56,7 @@ To use the Azure OpenAI Realtime Chat feature, you need to configure your Azure 
    VITE_AZURE_OPENAI_API_KEY=your_azure_openai_api_key_here
    VITE_AZURE_OPENAI_DEPLOYMENT=gpt-4o-realtime-preview
    VITE_AZURE_OPENAI_VOICE=alloy
+   VITE_AZURE_OPENAI_LOCATION=eastus2
    ```
 
 2. Get your credentials from [Azure Portal](https://portal.azure.com/):

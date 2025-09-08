@@ -12,10 +12,11 @@ const getAzureOpenAIConfig = (): AzureOpenAIRealtimeConfig | null => {
   const apiKey = import.meta.env.VITE_AZURE_OPENAI_API_KEY;
   const deployment = import.meta.env.VITE_AZURE_OPENAI_DEPLOYMENT;
   const voice = import.meta.env.VITE_AZURE_OPENAI_VOICE;
+  const location = import.meta.env.VITE_AZURE_OPENAI_LOCATION;
 
-  if (!endpoint || !apiKey || !deployment || !voice) {
+  if (!endpoint || !apiKey || !deployment || !voice || !location) {
     console.warn(
-      'Azure OpenAI Realtime API configuration missing. Please set VITE_AZURE_OPENAI_ENDPOINT, VITE_AZURE_OPENAI_API_KEY, VITE_AZURE_OPENAI_DEPLOYMENT, and VITE_AZURE_OPENAI_VOICE environment variables.'
+      'Azure OpenAI Realtime API configuration missing. Please set VITE_AZURE_OPENAI_ENDPOINT, VITE_AZURE_OPENAI_API_KEY, VITE_AZURE_OPENAI_DEPLOYMENT, VITE_AZURE_OPENAI_VOICE, and VITE_AZURE_OPENAI_LOCATION environment variables.'
     );
     return null;
   }
@@ -26,6 +27,7 @@ const getAzureOpenAIConfig = (): AzureOpenAIRealtimeConfig | null => {
     deployment,
     voice,
     instructions: "You are a helpful assistant. Be concise and friendly.",
+    location,
   };
 };
 
@@ -87,7 +89,7 @@ export const useAzureOpenAIRealtime = () => {
 
     try {
       // Create session using Azure OpenAI Sessions API
-      const sessionsUrl = `${config.endpoint}/openai/realtime/sessions?api-version=2024-10-01-preview`;
+      const sessionsUrl = `${config.endpoint}/openai/realtimeapi/sessions?api-version=2025-04-01-preview`;
       
       const response = await fetch(sessionsUrl, {
         method: 'POST',
@@ -192,7 +194,7 @@ export const useAzureOpenAIRealtime = () => {
       await peerConnection.setLocalDescription(offer);
 
       // Send SDP to WebRTC endpoint
-      const webrtcUrl = `${config.endpoint}/openai/realtime/webrtc?api-version=2024-10-01-preview&model=${config.deployment}`;
+      const webrtcUrl = `https://${config.location}.realtimeapi-preview.ai.azure.com/v1/realtimertc`;
       
       const sdpResponse = await fetch(webrtcUrl, {
         method: 'POST',
