@@ -1,0 +1,11 @@
+.capture-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.capture-controls button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
