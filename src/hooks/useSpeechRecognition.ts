@@ -71,6 +71,8 @@ export const useSpeechRecognition = () => {
         recognitionRef.current.abort();
       }
     };
+    // SpeechRecognition is a stable reference determined at module scope
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const startListening = useCallback(() => {

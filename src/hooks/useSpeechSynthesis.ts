@@ -50,7 +50,9 @@ export const useSpeechSynthesis = () => {
         window.speechSynthesis.onvoiceschanged = null;
       };
     }
-  }, [isSupported]);
+    // isSupported is a stable reference determined at module scope
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const speak = useCallback((text: string, settings?: Partial<SpeechSynthesisSettings>) => {
     if (!state.isSupported || !text.trim()) return;
