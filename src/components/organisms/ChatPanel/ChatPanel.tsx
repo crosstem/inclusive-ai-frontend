@@ -27,10 +27,10 @@ export const ChatPanel: React.FC = () => {
         </div>
         <div className="chat-panel__status">
           {isConnecting && (
-            <Text size="small" color="secondary">接続中...</Text>
+            <Text size="small" color="secondary">Connecting...</Text>
           )}
           {isConnected && (
-            <Text size="small" color="primary">✅ 接続済み</Text>
+            <Text size="small" color="primary">✅ Connected</Text>
           )}
           {error && (
             <div className="chat-panel__error">
@@ -39,6 +39,7 @@ export const ChatPanel: React.FC = () => {
                 className="chat-panel__error-close"
                 onClick={clearError}
                 type="button"
+                aria-label="Dismiss error"
               >
                 ×
               </button>

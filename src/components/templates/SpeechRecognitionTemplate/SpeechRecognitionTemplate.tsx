@@ -11,8 +11,8 @@ export interface SpeechRecognitionTemplateProps {
 
 export const SpeechRecognitionTemplate: React.FC<SpeechRecognitionTemplateProps> = ({
   children,
-  title = 'リアルタイム音声認識',
-  subtitle = 'Web Speech APIを使用したリアルタイム音声認識デモ',
+  title = 'Real-time Speech Recognition',
+  subtitle = 'Real-time speech recognition demo using Web Speech API',
   className = '',
 }) => {
   const baseClass = 'speech-recognition-template';
@@ -37,7 +37,7 @@ export const SpeechRecognitionTemplate: React.FC<SpeechRecognitionTemplateProps>
       
       <footer className="speech-recognition-template__footer">
         <Text variant="caption" color="muted" size="small">
-          ※ この機能を使用するにはマイクへのアクセス許可が必要です
+          Note: Microphone access permission is required to use this feature
         </Text>
       </footer>
     </div>

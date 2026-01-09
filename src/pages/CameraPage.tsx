@@ -48,7 +48,6 @@ export const CameraPage: React.FC = () => {
 
   return (
     <div className="camera-page">
-      <h3>Camera</h3>
       <CameraCapture videoRef={videoRef} />
       <CameraControls onStart={start} onStop={stop} onSwitch={switchCamera} isRunning={isRunning} />
       <ImageAnalysisPanel videoRef={videoRef} />

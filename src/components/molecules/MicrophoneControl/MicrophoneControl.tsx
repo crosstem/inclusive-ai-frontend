@@ -32,8 +32,8 @@ export const MicrophoneControl: React.FC<MicrophoneControlProps> = ({
   };
 
   const getStatusMessage = () => {
-    if (!isSupported) return 'ブラウザが音声認識をサポートしていません';
-    if (error) return `エラー: ${error}`;
+    if (!isSupported) return 'Your browser does not support speech recognition';
+    if (error) return `Error: ${error}`;
     return undefined;
   };
 
@@ -53,7 +53,7 @@ export const MicrophoneControl: React.FC<MicrophoneControlProps> = ({
             variant="danger"
             disabled={!isSupported}
           >
-            🛑 停止
+            🛑 Stop
           </Button>
         ) : (
           <Button 
@@ -61,7 +61,7 @@ export const MicrophoneControl: React.FC<MicrophoneControlProps> = ({
             variant="primary"
             disabled={!isSupported || !!error}
           >
-            🎤 開始
+            🎤 Start
           </Button>
         )}
         
@@ -70,7 +70,7 @@ export const MicrophoneControl: React.FC<MicrophoneControlProps> = ({
           variant="secondary"
           size="small"
         >
-          🗑️ クリア
+          🗑️ Clear
         </Button>
       </div>
     </div>

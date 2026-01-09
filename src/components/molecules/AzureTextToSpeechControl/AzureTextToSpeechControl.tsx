@@ -40,17 +40,17 @@ export const AzureTextToSpeechControl: React.FC<AzureTextToSpeechControlProps> =
       <div className="azure-text-to-speech-control__input-section">
         <label htmlFor="azure-speech-text">
           <Text variant="subtitle" size="medium">
-            読み上げるテキスト
+            Text to Speak
           </Text>
         </label>
         <TextArea
           id="azure-speech-text"
           value={text}
           onChange={onTextChange}
-          placeholder="ここに読み上げるテキストを入力してください..."
+          placeholder="Enter text to be spoken here..."
           disabled={!isSupported || !isConnected}
           rows={6}
-          aria-label="読み上げるテキストを入力"
+          aria-label="Enter text to speak"
           aria-describedby={error ? "azure-speech-error" : undefined}
         />
       </div>
@@ -58,11 +58,11 @@ export const AzureTextToSpeechControl: React.FC<AzureTextToSpeechControlProps> =
       <div className="azure-text-to-speech-control__controls">
         {!isSupported ? (
           <Text variant="caption" color="error">
-            Azure Speech SDK が利用できません。設定を確認してください。
+            Azure Speech SDK is not available. Please check your configuration.
           </Text>
         ) : !isConnected ? (
           <Text variant="caption" color="error">
-            Azure Speech Service に接続できません。
+            Unable to connect to Azure Speech Service.
           </Text>
         ) : (
           <div className="azure-text-to-speech-control__buttons">
@@ -73,7 +73,7 @@ export const AzureTextToSpeechControl: React.FC<AzureTextToSpeechControlProps> =
                 variant="primary"
                 size="medium"
               >
-                再生
+                ▶ Play
               </Button>
             ) : (
               <>
@@ -82,7 +82,7 @@ export const AzureTextToSpeechControl: React.FC<AzureTextToSpeechControlProps> =
                   variant="danger"
                   size="medium"
                 >
-                  停止
+                  ⏹ Stop
                 </Button>
               </>
             )}
@@ -93,7 +93,7 @@ export const AzureTextToSpeechControl: React.FC<AzureTextToSpeechControlProps> =
       {error && (
         <div className="azure-text-to-speech-control__error" id="azure-speech-error">
           <Text variant="caption" color="error">
-            エラー: {error}
+            Error: {error}
           </Text>
         </div>
       )}

@@ -51,14 +51,14 @@ export const VoiceSettings: React.FC<VoiceSettingsProps> = ({
   return (
     <div className={classes}>
       <Text variant="subtitle" size="medium" as="h3">
-        音声設定
+        Voice Settings
       </Text>
       
       <div className="voice-settings__controls">
         <div className="voice-settings__control">
           <label htmlFor="voice-select">
             <Text variant="body" size="small">
-              音声
+              Voice
             </Text>
           </label>
           <select
@@ -66,9 +66,10 @@ export const VoiceSettings: React.FC<VoiceSettingsProps> = ({
             className="voice-settings__select"
             value={selectedVoice?.voiceURI || ''}
             onChange={handleVoiceChange}
+            aria-label="Select voice"
           >
             {voices.length === 0 ? (
-              <option value="">音声を読み込み中...</option>
+              <option value="">Loading voices...</option>
             ) : (
               voices.map((voice) => (
                 <option key={voice.voiceURI} value={voice.voiceURI}>
@@ -82,7 +83,7 @@ export const VoiceSettings: React.FC<VoiceSettingsProps> = ({
         <div className="voice-settings__control">
           <label htmlFor="rate-slider">
             <Text variant="body" size="small">
-              速度: {rate.toFixed(1)}x
+              Speed: {rate.toFixed(1)}x
             </Text>
           </label>
           <input
@@ -94,13 +95,18 @@ export const VoiceSettings: React.FC<VoiceSettingsProps> = ({
             step="0.1"
             value={rate}
             onChange={handleRateChange}
+            aria-label={`Speed: ${rate.toFixed(1)}x`}
           />
+          <div className="voice-settings__slider-labels">
+            <span>0.1x</span>
+            <span>2x</span>
+          </div>
         </div>
 
         <div className="voice-settings__control">
           <label htmlFor="pitch-slider">
             <Text variant="body" size="small">
-              ピッチ: {pitch.toFixed(1)}
+              Pitch: {pitch.toFixed(1)}
             </Text>
           </label>
           <input
@@ -112,13 +118,18 @@ export const VoiceSettings: React.FC<VoiceSettingsProps> = ({
             step="0.1"
             value={pitch}
             onChange={handlePitchChange}
+            aria-label={`Pitch: ${pitch.toFixed(1)}`}
           />
+          <div className="voice-settings__slider-labels">
+            <span>0</span>
+            <span>2</span>
+          </div>
         </div>
 
         <div className="voice-settings__control">
           <label htmlFor="volume-slider">
             <Text variant="body" size="small">
-              音量: {Math.round(volume * 100)}%
+              Volume: {Math.round(volume * 100)}%
             </Text>
           </label>
           <input
@@ -130,7 +141,12 @@ export const VoiceSettings: React.FC<VoiceSettingsProps> = ({
             step="0.1"
             value={volume}
             onChange={handleVolumeChange}
+            aria-label={`Volume: ${Math.round(volume * 100)}%`}
           />
+          <div className="voice-settings__slider-labels">
+            <span>0%</span>
+            <span>100%</span>
+          </div>
         </div>
       </div>
     </div>
