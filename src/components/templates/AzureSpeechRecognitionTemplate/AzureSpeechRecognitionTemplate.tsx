@@ -11,8 +11,8 @@ export interface AzureSpeechRecognitionTemplateProps {
 
 export const AzureSpeechRecognitionTemplate: React.FC<AzureSpeechRecognitionTemplateProps> = ({
   children,
-  title = 'Azure AI Speech 音声認識',
-  subtitle = 'Azure Cognitive Services Speech を使用したリアルタイム音声認識デモ',
+  title = 'Azure AI Speech Recognition',
+  subtitle = 'Real-time speech recognition demo using Azure Cognitive Services Speech',
   className = '',
 }) => {
   const baseClass = 'azure-speech-recognition-template';
@@ -37,7 +37,7 @@ export const AzureSpeechRecognitionTemplate: React.FC<AzureSpeechRecognitionTemp
       
       <footer className="azure-speech-recognition-template__footer">
         <Text variant="caption" color="muted" size="small">
-          ※ この機能を使用するには Azure Speech Service の設定とマイクへのアクセス許可が必要です
+          Note: Azure Speech Service configuration and microphone access permission are required
         </Text>
       </footer>
     </div>

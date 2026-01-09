@@ -1,5 +1,11 @@
 .camera-capture {
-  display: block;
+  display: flex;
+  justify-content: center;
   max-width: 640px;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #1a1a1a;
+  min-height: 240px;
 }
 

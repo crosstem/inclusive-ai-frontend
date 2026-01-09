@@ -39,15 +39,15 @@ export const StatusIndicator: React.FC<StatusIndicatorProps> = ({
     
     switch (status) {
       case 'idle':
-        return '待機中';
+        return 'Ready';
       case 'listening':
-        return '音声認識中...';
+        return 'Listening...';
       case 'processing':
-        return '処理中...';
+        return 'Processing...';
       case 'error':
-        return 'エラーが発生しました';
+        return 'Error occurred';
       default:
-        return '待機中';
+        return 'Ready';
     }
   };
 

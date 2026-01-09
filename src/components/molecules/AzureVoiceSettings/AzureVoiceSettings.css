@@ -78,6 +78,18 @@
   background: var(--primary-color-dark, #0056b3);
 }
 
+.azure-voice-settings__slider:focus {
+  box-shadow: 0 0 0 2px var(--primary-color-light, #007bff33);
+}
+
+.azure-voice-settings__slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #888;
+  margin-top: 2px;
+}
+
 @media (max-width: 768px) {
   .azure-voice-settings {
     padding: 12px;

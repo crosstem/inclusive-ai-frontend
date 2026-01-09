@@ -22,7 +22,7 @@ export const TranscriptDisplay: React.FC<TranscriptDisplayProps> = ({
     <div className={classes}>
       <div className="transcript-display__header">
         <Text variant="subtitle" size="medium">
-          📝 音声認識結果
+          📝 Speech Recognition Results
         </Text>
       </div>
       
@@ -56,7 +56,7 @@ export const TranscriptDisplay: React.FC<TranscriptDisplayProps> = ({
             color="muted"
             className="transcript-display__placeholder"
           >
-            音声認識を開始すると、ここに認識結果が表示されます...
+            Start speech recognition to see results here...
           </Text>
         )}
       </div>

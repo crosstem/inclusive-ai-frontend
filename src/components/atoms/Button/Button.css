@@ -57,8 +57,10 @@
 
 /* States */
 .button--disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
+  background-color: #ccc !important;
+  color: #666 !important;
 }
 
 .button:focus {

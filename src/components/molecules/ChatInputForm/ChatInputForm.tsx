@@ -46,7 +46,7 @@ export const ChatInputForm: React.FC<ChatInputFormProps> = ({
         onChange={setMessage}
         onSubmit={handleSubmit}
         disabled={disabled || isSending}
-        placeholder="メッセージを入力..."
+        placeholder="Type a message..."
       />
       <Button
         className={`chat-input-form__send-button ${isSending ? 'chat-input-form__send-button--sending' : ''}`}

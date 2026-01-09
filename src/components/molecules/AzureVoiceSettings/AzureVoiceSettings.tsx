@@ -52,14 +52,14 @@ export const AzureVoiceSettings: React.FC<AzureVoiceSettingsProps> = ({
   return (
     <div className={classes}>
       <Text variant="subtitle" size="medium" as="h3">
-        Azure音声設定
+        Azure Voice Settings
       </Text>
       
       <div className="azure-voice-settings__controls">
         <div className="azure-voice-settings__control">
           <label htmlFor="azure-voice-select">
             <Text variant="body" size="small">
-              音声
+              Voice
             </Text>
           </label>
           <select
@@ -67,9 +67,10 @@ export const AzureVoiceSettings: React.FC<AzureVoiceSettingsProps> = ({
             className="azure-voice-settings__select"
             value={selectedVoice?.name || ''}
             onChange={handleVoiceChange}
+            aria-label="Select Azure voice"
           >
             {voices.length === 0 ? (
-              <option value="">音声を読み込み中...</option>
+              <option value="">Loading voices...</option>
             ) : (
               voices.map((voice) => (
                 <option key={voice.name} value={voice.name}>
@@ -83,7 +84,7 @@ export const AzureVoiceSettings: React.FC<AzureVoiceSettingsProps> = ({
         <div className="azure-voice-settings__control">
           <label htmlFor="azure-rate-slider">
             <Text variant="body" size="small">
-              速度: {rate.toFixed(1)}x
+              Speed: {rate.toFixed(1)}x
             </Text>
           </label>
           <input
@@ -95,13 +96,18 @@ export const AzureVoiceSettings: React.FC<AzureVoiceSettingsProps> = ({
             step="0.1"
             value={rate}
             onChange={handleRateChange}
+            aria-label={`Speed: ${rate.toFixed(1)}x`}
           />
+          <div className="azure-voice-settings__slider-labels">
+            <span>0.5x</span>
+            <span>2x</span>
+          </div>
         </div>
 
         <div className="azure-voice-settings__control">
           <label htmlFor="azure-pitch-slider">
             <Text variant="body" size="small">
-              ピッチ: {pitch.toFixed(1)}
+              Pitch: {pitch.toFixed(1)}
             </Text>
           </label>
           <input
@@ -113,13 +119,18 @@ export const AzureVoiceSettings: React.FC<AzureVoiceSettingsProps> = ({
             step="0.1"
             value={pitch}
             onChange={handlePitchChange}
+            aria-label={`Pitch: ${pitch.toFixed(1)}`}
           />
+          <div className="azure-voice-settings__slider-labels">
+            <span>0.5</span>
+            <span>1.5</span>
+          </div>
         </div>
 
         <div className="azure-voice-settings__control">
           <label htmlFor="azure-volume-slider">
             <Text variant="body" size="small">
-              音量: {Math.round(volume * 100)}%
+              Volume: {Math.round(volume * 100)}%
             </Text>
           </label>
           <input
@@ -131,7 +142,12 @@ export const AzureVoiceSettings: React.FC<AzureVoiceSettingsProps> = ({
             step="0.1"
             value={volume}
             onChange={handleVolumeChange}
+            aria-label={`Volume: ${Math.round(volume * 100)}%`}
           />
+          <div className="azure-voice-settings__slider-labels">
+            <span>0%</span>
+            <span>100%</span>
+          </div>
         </div>
       </div>
     </div>

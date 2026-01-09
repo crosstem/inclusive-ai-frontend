@@ -44,17 +44,17 @@ export const TextToSpeechControl: React.FC<TextToSpeechControlProps> = ({
       <div className="text-to-speech-control__input-section">
         <label htmlFor="speech-text">
           <Text variant="subtitle" size="medium">
-            読み上げるテキスト
+            Text to Speak
           </Text>
         </label>
         <TextArea
           id="speech-text"
           value={text}
           onChange={onTextChange}
-          placeholder="ここに読み上げるテキストを入力してください..."
+          placeholder="Enter text to be spoken here..."
           disabled={!isSupported}
           rows={6}
-          aria-label="読み上げるテキストを入力"
+          aria-label="Enter text to speak"
           aria-describedby={error ? "speech-error" : undefined}
         />
       </div>
@@ -62,7 +62,7 @@ export const TextToSpeechControl: React.FC<TextToSpeechControlProps> = ({
       <div className="text-to-speech-control__controls">
         {!isSupported ? (
           <Text variant="caption" color="error">
-            お使いのブラウザは音声合成機能に対応していません。
+            Your browser does not support speech synthesis.
           </Text>
         ) : (
           <div className="text-to-speech-control__buttons">
@@ -73,7 +73,7 @@ export const TextToSpeechControl: React.FC<TextToSpeechControlProps> = ({
                 variant="primary"
                 size="medium"
               >
-                再生
+                ▶ Play
               </Button>
             ) : (
               <>
@@ -83,7 +83,7 @@ export const TextToSpeechControl: React.FC<TextToSpeechControlProps> = ({
                     variant="primary"
                     size="medium"
                   >
-                    再開
+                    ▶ Resume
                   </Button>
                 ) : (
                   <Button
@@ -91,7 +91,7 @@ export const TextToSpeechControl: React.FC<TextToSpeechControlProps> = ({
                     variant="secondary"
                     size="medium"
                   >
-                    一時停止
+                    ⏸ Pause
                   </Button>
                 )}
                 <Button
@@ -99,7 +99,7 @@ export const TextToSpeechControl: React.FC<TextToSpeechControlProps> = ({
                   variant="danger"
                   size="medium"
                 >
-                  停止
+                  ⏹ Stop
                 </Button>
               </>
             )}
@@ -110,7 +110,7 @@ export const TextToSpeechControl: React.FC<TextToSpeechControlProps> = ({
       {error && (
         <div className="text-to-speech-control__error">
           <Text variant="caption" color="error">
-            エラー: {error}
+            Error: {error}
           </Text>
         </div>
       )}

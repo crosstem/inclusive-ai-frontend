@@ -29,8 +29,7 @@
   background-color: white;
   cursor: pointer;
   background: #ffffff;
-  color: #111; /* ダークテキスト */
-  border: 1px solid #ccc;
+  color: #111;
 }
 
 .voice-settings__select:focus {
@@ -45,22 +44,30 @@
   border-radius: 3px;
   background: #ddd;
   outline: none;
-  opacity: 0.7;
   transition: opacity 0.2s;
   cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .voice-settings__slider:hover {
-  opacity: 1;
+  background: #ccc;
+}
+
+.voice-settings__slider:focus {
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
 .voice-settings__slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
   appearance: none;
   width: 18px;
   height: 18px;
   border-radius: 50%;
   background: #007bff;
   cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .voice-settings__slider::-moz-range-thumb {
@@ -69,7 +76,16 @@
   border-radius: 50%;
   background: #007bff;
   cursor: pointer;
-  border: none;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.voice-settings__slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #888;
+  margin-top: -4px;
 }
 
 @media (max-width: 768px) {
