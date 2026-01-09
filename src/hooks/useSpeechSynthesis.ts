@@ -5,8 +5,10 @@ import type {
 } from '../types/speechSynthesis';
 
 export const useSpeechSynthesis = () => {
+  const isSupported = 'speechSynthesis' in window;
+  
   const [state, setState] = useState<SpeechSynthesisState>({
-    isSupported: false,
+    isSupported,
     isSpeaking: false,
     isPaused: false,
     voices: [],
@@ -20,10 +22,9 @@ export const useSpeechSynthesis = () => {
 
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
 
-  // Check browser support and load voices
+  // Load voices
   useEffect(() => {
-    if ('speechSynthesis' in window) {
-      setState(prev => ({ ...prev, isSupported: true }));
+    if (isSupported) {
       
       const loadVoices = () => {
         const voices = window.speechSynthesis.getVoices();
@@ -48,9 +49,9 @@ export const useSpeechSynthesis = () => {
       return () => {
         window.speechSynthesis.onvoiceschanged = null;
       };
-    } else {
-      setState(prev => ({ ...prev, isSupported: false }));
     }
+    // isSupported is a stable reference determined at module scope
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const speak = useCallback((text: string, settings?: Partial<SpeechSynthesisSettings>) => {

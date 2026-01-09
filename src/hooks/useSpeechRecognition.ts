@@ -2,22 +2,22 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import type { SpeechRecognitionState, SpeechRecognitionEvent, SpeechRecognitionErrorEvent, SpeechRecognition } from '../types/speechRecognition';
 
 export const useSpeechRecognition = () => {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const isSupported = !!SpeechRecognition;
+  
   const [state, setState] = useState<SpeechRecognitionState>({
     isListening: false,
     transcript: '',
     interimTranscript: '',
     error: null,
-    isSupported: false,
+    isSupported,
   });
 
   const recognitionRef = useRef<SpeechRecognition | null>(null);
 
-  // Check browser support on mount
+  // Initialize recognition on mount
   useEffect(() => {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    
     if (SpeechRecognition) {
-      setState(prev => ({ ...prev, isSupported: true }));
       
       // Initialize recognition
       recognitionRef.current = new SpeechRecognition();
@@ -64,8 +64,6 @@ export const useSpeechRecognition = () => {
           isListening: false,
         }));
       };
-    } else {
-      setState(prev => ({ ...prev, isSupported: false }));
     }
     
     return () => {
@@ -73,6 +71,8 @@ export const useSpeechRecognition = () => {
         recognitionRef.current.abort();
       }
     };
+    // SpeechRecognition is a stable reference determined at module scope
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const startListening = useCallback(() => {
